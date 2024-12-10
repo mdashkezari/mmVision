@@ -10,9 +10,7 @@ pip install -e .
 
 ## Usage:
 ```
-$ cd mmVision
-$ pip install -e .
-$ cd mmVision
+$ cd mmVision/mmVision
 $ python main.py 
 ```
 
