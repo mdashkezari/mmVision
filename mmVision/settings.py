@@ -16,10 +16,10 @@ TENSORBOARD_DIR = f"{HOME}tensorboard/"                            # path to the
 CHECKPOINT_DIR = f"{HOME}checkpoint/"                              # path to the checkpoint directory
 INFERENCE_DIR = f"{HOME}inference/"                                
 
-# DATA_DIR = f"{HOME}data/"                                          # path to the data directory where the original raw data and processed versions are stored.
-DATA_DIR = f"/data/dev/microscope/data/"                                          # path to the data directory where the original raw data and processed versions are stored.
+DATA_DIR = f"{HOME}data/"                                          # path to the data directory where the original raw data and processed versions are stored.
 
-TRAIN_TEST_DIR = f"{HOME}data/traintest/"                          # path to dir where different versions of train-test datasets are stored
+# TRAIN_TEST_DIR = f"{HOME}data/traintest/"                          # path to dir where different versions of train-test datasets are stored
+TRAIN_TEST_DIR = "/data1/sandbox/micro3/data/traintest/"                          # path to dir where different versions of train-test datasets are stored
 #################################################
 
 ################# BERINGSEA (ZOO) #################

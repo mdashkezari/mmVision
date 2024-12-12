@@ -7,18 +7,19 @@ class TinyVGG(nn.Module):
                  image_size: tuple[int, int],
                  channels: int,
                  hidden_units: int,
-                 output_shape: int
+                 n_classes: int
                  ) -> None:
         """
 
         Parameters
         ------------
         channels: int
-            Number of input image channels.
+            Number of channels in the input image.
         
 
         """
         super().__init__()
+        self.model_name = "tinyVGG"
         self.conv_block_1 = nn.Sequential(
             nn.Conv2d(in_channels=channels, 
                       out_channels=hidden_units, 
@@ -44,8 +45,8 @@ class TinyVGG(nn.Module):
         )
         self.classifier = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(in_features=hidden_units * (image_size[0] * image_size[1]) // 16,
-                      out_features=output_shape)
+            nn.Linear(in_features=hidden_units * int(image_size[0] * image_size[1] / 16),
+                      out_features=n_classes)
         )
     
     def forward(self, x: torch.Tensor):
@@ -53,3 +54,21 @@ class TinyVGG(nn.Module):
         x = self.conv_block_2(x)
         x = self.classifier(x)
         return x
+
+
+
+
+# from torchvision.transforms import v2
+# transformer = v2.Compose([
+#                    v2.ToImage(),
+#                    v2.ToDtype(torch.uint8, scale=True),
+#                    v2.Resize(self.image_size),
+#                    v2.ToDtype(torch.float32, scale=True),
+#                    ])
+
+# model = TinyVGG(
+#         image_size=self.image_size,
+#         channels=self.color_channel,
+#         hidden_units=10,
+#         n_classes=len(self.train_dataset.classes)
+#         )
